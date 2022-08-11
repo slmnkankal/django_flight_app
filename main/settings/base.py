@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'dj_rest_auth',
     # my apps
     'users',
+    'flight',
 
 ]
 
