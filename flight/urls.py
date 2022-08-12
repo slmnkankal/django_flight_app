@@ -1,9 +1,10 @@
 from xml.etree.ElementInclude import include
 from rest_framework import routers
-from .views import FlightView
+from .views import FlightView, ReservationView
 
 router = routers.DefaultRouter()
 router.register('flights', FlightView)
+router.register('resv', ReservationView)
 
 
 urlpatterns = [
