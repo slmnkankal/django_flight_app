@@ -16,3 +16,12 @@ class FlightView(viewsets.ModelViewSet):
 class ReservationView(viewsets.ModelViewSet):
     queryset = Reservation.objects.all()
     serializer_class = ReservationSerializer
+
+    def get_queryset(self):
+        return super().get_queryset()
+        # queryset = Reservation.objects.all() # same with first one!
+        if self.request.user.is_staff:
+            return
+        
+
+
