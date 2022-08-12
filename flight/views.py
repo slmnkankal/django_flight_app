@@ -17,11 +17,13 @@ class ReservationView(viewsets.ModelViewSet):
     queryset = Reservation.objects.all()
     serializer_class = ReservationSerializer
 
+
     def get_queryset(self):
-        return super().get_queryset()
-        # queryset = Reservation.objects.all() # same with first one!
+        # queryset = Reservation.objects.all() # same with second one!
+        queryset = super().get_queryset()
         if self.request.user.is_staff:
-            return
+            return queryset
+        return queryset.filter(user=self.request.user)
         
 
 
