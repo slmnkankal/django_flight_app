@@ -39,8 +39,8 @@ class ReservationView(viewsets.ModelViewSet):
 
 
     def get_queryset(self):
-        # queryset = Reservation.objects.all() # same with second one!
-        queryset = super().get_queryset()
+        queryset = Reservation.objects.all() # same with second one!
+        # queryset = super().get_queryset()
         if self.request.user.is_staff:
             return queryset
         return queryset.filter(user=self.request.user)
