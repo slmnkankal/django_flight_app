@@ -27,7 +27,7 @@ class FlightView(viewsets.ModelViewSet):
         else:
             queryset = Flight.objects.filter(date_of_departure__gt=now)
             if Flight.objects.filter(date_of_departure=today):
-                today_qs = Flight.objects.filter(date_of_departure=today).filter(etd__et=current_time)
+                today_qs = Flight.objects.filter(date_of_departure=today).filter(etd__gt=current_time)
                 queryset = queryset.union(today_qs)
             return queryset
 
