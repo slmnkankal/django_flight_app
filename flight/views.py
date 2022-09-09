@@ -43,7 +43,7 @@ class ReservationView(viewsets.ModelViewSet):
         # queryset = super().get_queryset()
         if self.request.user.is_staff:
             return queryset
-        return queryset.filter(user=self.request.user)
+        return queryset.filter(user=self.request.user.id)
         
 
 
