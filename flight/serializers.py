@@ -1,3 +1,4 @@
+from typing_extensions import Required
 from rest_framework import serializers
 from .models import Flight, Passenger, Reservation
 
@@ -17,17 +18,24 @@ class FlightSerializer(serializers.ModelSerializer):
 
 
 class PassengerSerializer(serializers.ModelSerializer):
-
+    pas_id = serializers.IntegerField(source='id', required=False)
     class Meta:
         model = Passenger
-        fields = '__all__'
+        fields = (
+            "id",
+            "pas_id",
+            "first_name",
+            "last_name",
+            "email",
+            "phone_number",
+        )
 
 class ReservationSerializer(serializers.ModelSerializer):
 
     passenger = PassengerSerializer(many=True, required=False)
     flight = serializers.StringRelatedField()   #default read_only=True
     user = serializers.StringRelatedField()     #default read_only=True
-    flight_id = serializers.IntegerField(write_only=True)
+    flight_id = serializers.IntegerField(required=False)
     user_id = serializers.IntegerField(write_only=True, required=False)
 
     class Meta:
@@ -51,6 +59,23 @@ class ReservationSerializer(serializers.ModelSerializer):
             reservation.passenger.add(pas)
         reservation.save()
         return reservation
+
+    def update(self, instance, validated_data):
+        passenger_data = validated_data.pop('passenger')
+        print("passenger data: ", passenger_data)
+        current_passengers = instance.passenger.all()
+        print("current passenger: ",current_passengers)
+        for passenger in passenger_data:
+            try:
+                pas = current_passengers.filter(id=passenger['id'])
+                if pas:
+                    pas = pas.update(**passenger)
+            except:
+                pas = Passenger.objects.create(**passenger)
+                instance.passenger.add(pas)
+        instance.flight_id = validated_data['flight_id']
+        instance.save()
+        return instance
 
 
 
