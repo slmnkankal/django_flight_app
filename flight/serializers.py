@@ -43,7 +43,7 @@ class ReservationSerializer(serializers.ModelSerializer):
         fields = (
             "id",
             "flight",
-            "flight_id",  # write_only
+            "flight_id",
             "user",
             "user_id",  # write_only
             "passenger"
