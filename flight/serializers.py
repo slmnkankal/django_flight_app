@@ -62,21 +62,35 @@ class ReservationSerializer(serializers.ModelSerializer):
 
     def update(self, instance, validated_data):
         passenger_data = validated_data.pop('passenger')
-        print("passenger data: ", passenger_data)
-        current_passengers = instance.passenger.all()
-        print("current passenger: ",current_passengers)
+        present = instance.passenger.all()
+        
+        ###########################################
+        #update yapılırken yolcu silmek için (to erase passenger when updating reservation)
+        
+        presentIdlist=[Id.id for Id in present ]
+        updatedIdlist= [item["id"] for item in passenger_data if "id" in item.keys()]
+        print(presentIdlist)
+        for Id in presentIdlist:
+            if Id in updatedIdlist:
+                pass
+            else:
+                print("non exist", Id)
+                present = present.exclude(id=Id)
+        instance.passenger.set(present)
+        print("present : ", present[0].id)
+        #######################################
+        
         for passenger in passenger_data:
             try:
-                pas = current_passengers.filter(id=passenger['id'])
+                pas = present.filter(id=passenger["id"])
                 if pas:
                     pas = pas.update(**passenger)
             except:
                 pas = Passenger.objects.create(**passenger)
                 instance.passenger.add(pas)
-        instance.flight_id = validated_data['flight_id']
+        instance.flight_id = validated_data["flight_id"]
         instance.save()
         return instance
-
 
 
 class StaffFlightSerializer(serializers.ModelSerializer):
