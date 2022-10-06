@@ -33,7 +33,7 @@ class PassengerSerializer(serializers.ModelSerializer):
 class ReservationSerializer(serializers.ModelSerializer):
 
     passenger = PassengerSerializer(many=True, required=False)
-    flight = serializers.StringRelatedField()   #default read_only=True
+    flight = serializers.StringRelatedField(read_only=False)   #default read_only=True
     user = serializers.StringRelatedField()     #default read_only=True
     flight_id = serializers.IntegerField(required=False)
     user_id = serializers.IntegerField(write_only=True, required=False)
