@@ -26,7 +26,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*', '.vercel.app', '.now.sh']
 
 
 # Application definition
@@ -165,3 +165,8 @@ REST_FRAMEWORK = {
 REST_AUTH_SERIALIZERS = {
     'TOKEN_SERIALIZER': 'users.serializers.CustomTokenSerializer',
 }
+
+import os
+STATIC_URL = 'static/'
+STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
