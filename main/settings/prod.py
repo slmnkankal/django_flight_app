@@ -24,6 +24,7 @@ DATABASES = {
         "PASSWORD": 'ekvoZ7IYkgoyUBDKFpqs',
         "HOST": 'containers-us-west-120.railway.app',
         "PORT": '7109',
+        "DATABASE_URL": 'postgresql://postgres:ekvoZ7IYkgoyUBDKFpqs@containers-us-west-120.railway.app:7109/railway',
         "ATOMIC_REQUESTS": True,
 
     }
