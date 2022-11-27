@@ -2,14 +2,28 @@ from .base import *
 
 
 #* Settings for postgresql 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql_psycopg2",
+#         "NAME": config("SQL_DATABASE"),
+#         "USER": config("SQL_PASSWORD"),
+#         "PASSWORD": config("SQL_PASSWORD"),
+#         "HOST": config("SQL_HOST"),
+#         "PORT": config("SQL_PORT"),
+#         "ATOMIC_REQUESTS": True,
+
+#     }
+# }
+
+#* Settings for railway postgresql
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": config("SQL_DATABASE"),
-        "USER": config("SQL_PASSWORD"),
-        "PASSWORD": config("SQL_PASSWORD"),
-        "HOST": config("SQL_HOST"),
-        "PORT": config("SQL_PORT"),
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": 'railway',
+        "USER": 'postgres',
+        "PASSWORD": 'ekvoZ7IYkgoyUBDKFpqs',
+        "HOST": 'containers-us-west-120.railway.app',
+        "PORT": '7109',
         "ATOMIC_REQUESTS": True,
 
     }
