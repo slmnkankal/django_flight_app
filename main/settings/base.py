@@ -27,7 +27,9 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 
 
-ALLOWED_HOSTS = ['*', '.vercel.app', '.now.sh', 'django-flight-app.up.railway.app']
+ALLOWED_HOSTS = ['web-production-0f17.up.railway.app']
+
+CSRF_TRUSTED_ORIGINS = ['https://web-production-0f17.up.railway.app']
 
 
 # Application definition
