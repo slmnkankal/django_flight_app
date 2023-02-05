@@ -20,9 +20,9 @@ Open [http://localhost:8000](http://localhost:8000) to view it in your browser.
 
 ### check app with these users
 
-aselim@murat.com selim.12345 (staff user)
+aselim@murat.com(email) aselim(username) selim.12345(password) (staff user)
 
-jack@doe.com jack.12345 (user)
+jack@doe.com(email) jack(username) jack.12345(password) (user)
 
 ![flight-app-register-login](https://user-images.githubusercontent.com/94119964/197400296-b861cf8b-47b5-4f96-9525-7fac77d1c4a4.gif)
 
