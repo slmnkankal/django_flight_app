@@ -21,6 +21,8 @@ class FlightView(viewsets.ModelViewSet):
         now = datetime.now()
         current_time = now.strftime('%H:%M:%S')
         today = date.today()
+        query = self.request.query_params.get('keyword')
+        print('query:', query)
 
         if self.request.user.is_staff:
             return super().get_queryset()
