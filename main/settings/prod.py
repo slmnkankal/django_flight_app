@@ -21,10 +21,10 @@ DATABASES = {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": 'railway',
         "USER": 'postgres',
-        "PASSWORD": 'wcwacM9B5O0x3JcI8v13',
+        "PASSWORD": '1OlFtSYXeHBEMbM5vDVN',
         "HOST": 'containers-us-west-120.railway.app',
         "PORT": '7109',
-        "DATABASE_URL": 'postgresql://postgres:wcwacM9B5O0x3JcI8v13@containers-us-west-120.railway.app:7109/railway',
+        "DATABASE_URL": 'postgresql://postgres:1OlFtSYXeHBEMbM5vDVN@containers-us-west-120.railway.app:7109/railway',
         "ATOMIC_REQUESTS": True,
 
     }
